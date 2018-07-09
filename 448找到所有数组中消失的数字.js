@@ -18,5 +18,23 @@
  * @return {number[]}
  */
 var findDisappearedNumbers = function(nums) {
-
+  let ln = nums.length
+  let res = []
+  let hash = {}
+  for (let i = 0; i < ln; i++) {
+    if (!hash[i + 1]) {	
+      hash[i + 1] = 1
+    }
+    if (nums.indexOf(i + 1) === -1) {	
+      res.push(i + 1)
+    } else {
+      if (!hash[i + 1]) {	
+        ln++
+      }
+    }
+  }
+  return res
 }
+
+const test = [4,3,2,7,8,2,3,1]
+console.log(findDisappearedNumbers(test))
