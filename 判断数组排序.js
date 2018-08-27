@@ -1,31 +1,31 @@
-const arr = [ 3, 2, 3]
+const arr = [1, 2, 3]
 
-function orderType (arr) {	
+function getArrOrder (arr) {	
   let ascendentCount = 0
   let decendentCount = 0
-  let equalCount = 0
   let result = ''
   const len = arr.length - 1
   for (let i = len; i > 0; i--) {
     if (arr[i] > arr[i - 1]) {	
+      if (decendentCount) {	
+        return '乱序'
+      }
       ascendentCount++
     } else if (arr[i] < arr[i - 1]) {
+      if (ascendentCount) {	
+        return '乱序'
+      }
       decendentCount++
-    } else {
-      equalCount++
     }
   }
-  if (equalCount === len) {	
+  if (ascendentCount === 0 && decendentCount === 0) {	
     result = '平序'
-  } else if (ascendentCount + equalCount === len && decendentCount === 0) {	
+  } else if (decendentCount === 0) {	
     result = '升序'
-  } else if (decendentCount + equalCount === len && ascendentCount === 0) {	
+  } else {	
     result = '降序'
-  } else {
-    result = '乱序'
   }
   return result
 }
 
-
-orderType(arr)
+console.log(getArrOrder(arr))
