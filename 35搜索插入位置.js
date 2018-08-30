@@ -26,7 +26,7 @@
  */
 // 注意考虑各种情况
 var searchInsert = function(nums, target) {
-    let ln = nums.length
+    const ln = nums.length
     for (let i = 0; i < nums.length; i++) {
       if (nums[i] === target) {	
         return i

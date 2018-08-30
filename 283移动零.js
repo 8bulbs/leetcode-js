@@ -15,7 +15,6 @@
  */
 var moveZeroes = function(nums) {
     let ln = nums.length
-    // 从后往前遍历更优, 固定了次数
     for (let i = 0; i < ln; i++) {
       if (nums[i] === 0) {	
         nums.splice(i--, 1)
