@@ -3,6 +3,7 @@ const nodes = [
   [        'b',                 'c'      ],
   [   'd',      'e',      'f',      'g'  ],
   ['h', 'i', 'j', 'k', 'l', 'm', 'n', 'o'] 
+  // ...
 ]
 // 如上数组
 // 'a'节点的子节点为'b'和'c'
@@ -17,6 +18,7 @@ const nodes = [
 //  [        'b'       ]
 //  [   'd',      'e'  ]
 //  ['h', 'i', 'j', 'k']
+//  // ...
 // ]
 
 const tree = {
@@ -48,39 +50,53 @@ const tree = {
     "parent": "c",
     "children": ["n", "o"]
   },
+  "h": {
+    "parent": "d",
+    "children": []
+  },
+  "i": {
+    "parent": "d",
+    "children": []
+  },
+  "j": {
+    "parent": "e",
+    "children": []
+  },
+  "k": {
+    "parent": "e",
+    "children": []
+  },
+  "l": {
+    "parent": "f",
+    "children": []
+  },
+  "m": {
+    "parent": "f",
+    "children": []
+  },
+  "n": {
+    "parent": "g",
+    "children": []
+  },
+  "o": {
+    "parent": "g",
+    "children": []
+  }
 }
 
-// tranform_tree_to_double_dimensional_array
-function t2dda (tree, currentNodeId) {
-  if (tree[currentNodeId].children.length) {
-    const res = [
-      [currentNodeId]
-    ]
-    let deepth = 0
-    res[++deepth] = []
-    func(deepth, currentNodeId)
-    function func (deepth, optionNodeId) {
-      const children = tree[currentNodeId].children
-      children.forEach(child => {
-        console.warn('res', res)
-        console.warn('deepth', deepth)
-        console.warn('currentNodeId', currentNodeId)
+// tranform_tree_nodes_to_double_dimensional_array
+function tt2dda (tree, currentNodeId) { 
+  let res = [[currentNodeId]];
+  +function func (optionNodeId, deepth) {
+    if (tree[optionNodeId].children.length) {
+      res[deepth] = res[deepth] || []
+      tree[optionNodeId].children.forEach(child => {
         res[deepth].push(child)
-        // 如果d或者e有子节点
-        if (tree[child].children.length) {
-          // 而且第三级数组是undefined, 则创建第三级空数组
-          if (!res[deepth + 1]) {
-            console.warn('创建第三级空数组')
-            res[++deepth] = []
-            func(deepth, child)
-          } else {
-            func(deepth, child)
-          }
-        }
+        func(child, deepth + 1)
       })
-  }
-  }
+    }
+  }(currentNodeId, 1)
   return res
 }
 
-console.log(t2dda(tree, 'b'))
+console.warn(tt2dda(tree, 'a'))
