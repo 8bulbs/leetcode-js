@@ -12,7 +12,7 @@
 
 // 输入: ["5","2","C","D","+"]
 // 输出: 30
-// 解释: 
+// 解释:
 // 第1轮：你可以得到5分。总和是：5。
 // 第2轮：你可以得到2分。总和是：7。
 // 操作1：第2轮的数据无效。总和是：5。
@@ -22,7 +22,7 @@
 
 // 输入: ["5","-2","4","C","D","9","+","+"]
 // 输出: 27
-// 解释: 
+// 解释:
 // 第1轮：你可以得到5分。总和是：5。
 // 第2轮：你可以得到-2分。总数是：3。
 // 第3轮：你可以得到4分。总和是：7。
@@ -61,6 +61,32 @@ var calPoints = function(ops) {
       sum -= numArr.pop()
     }
     ops.shift()
+  }
+  return sum
+};
+
+var calPoints = function(ops) {
+  let sum = 0
+  let numArr = []
+  let i = 0
+  while (i < ops.length) {
+    let cur = ops[i++]
+    let len = numArr.length
+    let num = Number(cur)
+    if (!isNaN(num)) {
+      numArr.push(num)
+      sum += num
+    } else if (cur === '+') {
+      let item = numArr[len - 1] + numArr[len - 2]
+      numArr.push(item)
+      sum += item
+    } else if (cur === 'D') {
+      let item = 2 * numArr[len - 1]
+      numArr.push(item)
+      sum += item
+    } else if (cur === 'C') {
+      sum -= numArr.pop()
+    }
   }
   return sum
 };

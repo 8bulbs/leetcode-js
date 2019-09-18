@@ -85,7 +85,7 @@ const tree = {
 }
 
 // tranform_tree_nodes_to_double_dimensional_array
-function tt2dda (tree, currentNodeId) { 
+function ttn2dda (tree, currentNodeId) { 
   let res = [[currentNodeId]];
   +function func (optionNodeId, deepth) {
     if (tree[optionNodeId].children.length) {
@@ -99,4 +99,8 @@ function tt2dda (tree, currentNodeId) {
   return res
 }
 
-console.warn(tt2dda(tree, 'a'))
+console.warn('ttn2dda(tree, "a")')
+console.table(ttn2dda(tree, 'a'))
+console.warn('\n\n\n\n\n')
+console.warn('ttn2dda(tree, "b")')
+console.table(ttn2dda(tree, 'b'))
