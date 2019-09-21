@@ -91,5 +91,123 @@ var calPoints = function(ops) {
   return sum
 };
 
+// 64 ms
+var calPoints = function(ops) {
+  let sum = 0
+  let numArr = []
+  let i = 0
+  while (i < ops.length) {
+    let cur = ops[i++]
+    let len = numArr.length
+    let num = Number(cur)
+    if (!isNaN(num)) {
+      numArr.push(num)
+      sum += num
+    } else if (cur === '+') {
+      numArr.push(numArr[len - 1] + numArr[len - 2])
+      sum += numArr[len]
+    } else if (cur === 'D') {
+      numArr.push(2 * numArr[len - 1])
+      sum += numArr[len]
+    } else if (cur === 'C') {
+      sum -= numArr.pop()
+    }
+  }
+  return sum
+};
+
+
+var calPoints = function(ops) {
+  let sum = 0
+  let numArr = []
+  let i = 0
+  while (i < ops.length) {
+    let cur = ops[i++]
+    let len = numArr.length
+    if (cur === '+') {
+      numArr.push(numArr[len - 1] + numArr[len - 2])
+      sum += numArr[len]
+    } else if (cur === 'D') {
+      numArr.push(2 * numArr[len - 1])
+      sum += numArr[len]
+    } else if (cur === 'C') {
+      sum -= numArr.pop()
+    } else {
+      numArr.push(Number(cur))
+      sum += numArr[len]
+    }
+  }
+  return sum
+};
+
+// 56ms
+var calPoints = function(ops) {
+  let sum = 0
+  let numArr = []
+  while (ops.length) {
+    let cur = ops.shift()
+    let len = numArr.length
+    if (cur === '+') {
+      numArr.push(numArr[len - 1] + numArr[len - 2])
+      sum += numArr[len]
+    } else if (cur === 'D') {
+      numArr.push(2 * numArr[len - 1])
+      sum += numArr[len]
+    } else if (cur === 'C') {
+      sum -= numArr.pop()
+    } else {
+      numArr.push(Number(cur))
+      sum += numArr[len]
+    }
+  }
+  return sum
+};
+
+var calPoints = function(ops) {
+  let sum = 0
+  let numArr = []
+  while (ops.length) {
+    let cur = ops.shift()
+    let len = numArr.length
+    let num = Number(cur)
+    if (!isNaN(num)) {
+      numArr.push(num)
+      sum += num
+    } else if (cur === '+') {
+      numArr.push(numArr[len - 1] + numArr[len - 2])
+      sum += numArr[len]
+    } else if (cur === 'D') {
+      numArr.push(2 * numArr[len - 1])
+      sum += numArr[len]
+    } else if (cur === 'C') {
+      sum -= numArr.pop()
+    }
+  }
+  return sum
+};
+
+var calPoints = function(ops) {
+  let sum = 0
+  let numArr = []
+  let i = 0
+  while (i < ops.length) {
+    let cur = ops[i++]
+    let len = numArr.length
+    if (!isNaN(Number(cur))) {
+      numArr.push(Number(cur))
+      sum += numArr[len]
+    } else if (cur === '+') {
+      numArr.push(numArr[len - 1] + numArr[len - 2])
+      sum += numArr[len]
+    } else if (cur === 'D') {
+      numArr.push(2 * numArr[len - 1])
+      sum += numArr[len]
+    } else if (cur === 'C') {
+      sum -= numArr.pop()
+    }
+  }
+  return sum
+};
+
 console.warn(calPoints(["5","-2","4","C","D","9","+","+"]))
 console.warn(calPoints(["5","2","C","D","+"]))

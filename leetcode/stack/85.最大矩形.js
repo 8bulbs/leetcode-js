@@ -16,5 +16,10 @@
  * @return {number}
  */
 var maximalRectangle = function(matrix) {
-    
+    const width = matrix[0].length
+    const height = matrix.length
+    function findSiblings1 (x, y) {
+      const siblings = matrix[y]
+      
+    }
 };
