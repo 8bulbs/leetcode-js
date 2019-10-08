@@ -14,24 +14,44 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var moveZeroes = function(nums) {
-    let ln = nums.length
-    for (let i = 0; i < ln; i++) {
-      if (nums[i] === 0) {	
-        nums.splice(i--, 1)
-        nums.push(0)
-        ln--
+    if (nums.length === 1) {
+      return nums
+    } else {
+      let k = 0
+      for (let i = 1; i < nums.length; i++) {
+        if (nums[k] === 0) {
+          if (nums[i] !== 0) {
+            // nums[k] ^= nums[i]
+            // nums[i] ^= nums[k]
+            // nums[k++] ^= nums[i]
+            let t = nums[k]
+            nums[k++] = nums[i]
+            nums[i] = t
+          }
+        } else {
+          k++
+        }
       }
+      return nums
     }
-    // let left = []
-    // let right = []
-    // for (let i = 0; i < nums.length; i++) {
-    //   if (nums[i] === 0) {	
-    //     right.push(0)
-    //   } else {
-    //     left.push(nums[i])
-    //   }
-    // }
-    // return left.concat(right)
 }
-const test = [0,1,0,3,12]
-console.log(moveZeroes(test))
+
+var moveZeroes = function(nums) {
+  let ln = nums.length
+  for (let i = 0; i < ln; i++) {
+    if (nums[i] === 0) {
+      nums.splice(i--, 1)
+      nums.push(0)
+      ln--
+    }
+  }
+}
+var test1 = [0,1,0,3,12]
+var test2 = [1, 0]
+var test3 = [2, 1]
+var test4 = [1, 0, 1]
+
+console.log(moveZeroes(test1))
+console.log(moveZeroes(test2))
+console.log(moveZeroes(test3))
+console.log(moveZeroes(test4))
