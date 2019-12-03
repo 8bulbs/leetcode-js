@@ -16,7 +16,7 @@
     "declarationDir": "lib/types"
   },
   "include": [
-    "src",
+    "src/main.ts",
     "test",
     "./store2.d.ts"
   ]

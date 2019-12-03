@@ -1,10 +1,10 @@
 {
-  "name": "singleton_class",
+  "name": "leetcode_playground",
   "version": "0.0.1",
-  "description": "singleton_class.js",
-  "main": "lib/singleton_class.umd.js",
-  "module": "lib/singleton_class.es.js",
-  "types": "lib/types/singleton_class.d.ts",
+  "description": "leetcode_playground.js",
+  "main": "lib/leetcode_playground.umd.js",
+  "module": "lib/leetcode_playground.es.js",
+  "types": "lib/types/leetcode_playground.d.ts",
   "scripts": {
     "start": "npm run clean & npm run dev & npm run rollup",
     "rollup": "rollup -w -c rollup.config.ts",
@@ -20,7 +20,7 @@
     "TS_NODE_PROJECT": "\"/build/webpack.tsconfig.json\""
   },
   "keywords": [
-    "singleton pattern",
+    "leetcode",
     "TypeScript",
     "TS",
     "webpack",

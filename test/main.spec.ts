@@ -1,7 +1,17 @@
-import SingletonClass from '../lib/singleton_class.es.js'
+import MyQueue from '../lib/leetcode_playground.es.js'
 
-test('is singleton', () => {
-  const instance = new SingletonClass()
-  const _instance = new SingletonClass()
-  expect(instance === _instance).toBe(true)
+const queue = new MyQueue()
+queue.push(1)
+queue.push(2)
+
+test('peek', () => {
+  expect(queue.peek()).toBe(1)
+})
+
+test('pop', () => {
+  expect(queue.pop()).toBe(1)
+})
+
+test('empty', () => {
+  expect(queue.empty()).toBe(false)
 })
