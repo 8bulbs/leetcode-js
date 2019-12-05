@@ -8,8 +8,7 @@ declare class LinkedListNode {
     next: LinkedListNode;
     constructor(data: any);
 }
-declare function checkRange(): Function;
-declare function logMethod(target: Object, propertyName: string, propertyDescriptor: PropertyDescriptor): PropertyDescriptor;
+declare function checkRange(target: Object, propertyName: string, propertyDescriptor: PropertyDescriptor): PropertyDescriptor;
 declare class LinkedList {
     private head;
     private tail;
@@ -18,5 +17,6 @@ declare class LinkedList {
     get(index: number): LinkedListNode;
     remove(index: number): LinkedListNode;
     print(): void;
+    getSize(): number;
 }
 declare const myList: LinkedList;

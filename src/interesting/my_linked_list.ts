@@ -24,8 +24,19 @@ function observe(data) {
   })
 }
 
-const array = new Array(100).fill(0)
+let array = new Array(100).fill(0)
 observe(array)
+console.warn('1')
+array = new Proxy(new Array(100).fill(0), {
+  get (target, key, receiver) {
+    operationCount++
+    return Reflect.get(target, key, receiver)
+  },
+  set (target, key, value, receiver) {
+    operationCount++
+    return Reflect.set(target, key, value, receiver)
+  }
+})
 
 function logOperationCount (caseName, cb, ...args) {
   operationCount = 0
