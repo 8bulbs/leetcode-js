@@ -23,3 +23,20 @@ var lowestCommonAncestor = function(root, p, q) {
       return root
   }
 }
+
+var lowestCommonAncestor = function(root, p, q) {
+  let aNode = root
+  let pv = p.val
+  let qv = q.val
+  while (aNode) {
+      const av = aNode.val
+      if (pv > av && qv > av) {
+          aNode = aNode.right
+      } else if (pv < av && qv < av) {
+          aNode = aNode.left
+      } else {
+          return aNode
+      }
+  }
+  return null
+}
