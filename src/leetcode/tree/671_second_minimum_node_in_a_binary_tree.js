@@ -32,14 +32,13 @@ var findSecondMinimumValue = function(root) {
 
 var findSecondMinimumValue = function(root) {
   let arr = []
-  function travelsal (root) {
+  ;(function traversal (root) {
     if (root !== null) {
-      travelsal(root.left)
+      traversal(root.left)
       arr.push(root.val)
-      travelsal(root.right)
+      traversal(root.right)
     }
-  }
-  travelsal(root)
+  })(root)
   let _arr = [...new Set(arr)].sort()
   return _arr[1] ? _arr[1] : -1
 };

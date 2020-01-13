@@ -14,16 +14,16 @@ var levelOrderBottom = function(root) {
     return []
   }
   let res = []
-  function travelsal (root, depth) {
+  function traversal (root, depth) {
     if (root !== null) {
       if (!res[depth]) {
         res[depth] = []
       }
-      travelsal(root.left, depth + 1)
+      traversal(root.left, depth + 1)
       res[depth].push(root.val)
-      travelsal(root.right, depth + 1)
+      traversal(root.right, depth + 1)
     }
   }
-  travelsal(root, 0)
+  traversal(root, 0)
   return res.reverse()
 };
