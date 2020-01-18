@@ -19,7 +19,7 @@
 // 输入：4
 // 输出：3
 // 解释：F(4) = F(3) + F(2) = 2 + 1 = 3.
- 
+
 
 // 提示：
 
@@ -32,7 +32,7 @@
 var fib = function(N) {
   const memory = {
     '0': 0,
-    '1': 1 
+    '1': 1
   }
   if (memory[N] === undefined) {
     memory[N] = fib(N - 1) + fib(N - 2)
@@ -40,4 +40,26 @@ var fib = function(N) {
   return memory[N]
 };
 
-console.warn(fib(4))
+var fib = function(N) {
+  if (N === 0) {
+    return 0
+  }
+  if (N === 1 || N === 2) {
+    return 1
+  }
+  let i = 2
+  let pre = 1
+  let cur = 1
+  while (i++ < N) {
+    const temp = pre + cur
+    pre = cur
+    cur = temp
+  }
+  return cur
+}
+
+
+
+console.warn(3, fib(4))
+console.warn(5, fib(5))
+console.warn(8, fib(6))
