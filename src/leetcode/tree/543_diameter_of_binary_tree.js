@@ -38,7 +38,7 @@ var diameterOfBinaryTree = function(root) {
     } else if (root.right !== null && root.left === null) {
       return getMaxDepth(root.right)
     } else {
-      return getMaxDepth(root.left) + getMaxDepth(root.right)
+      return getMaxDepth(root.left) + getMaxDepth(root.right) - 2
     }
   }
 };
