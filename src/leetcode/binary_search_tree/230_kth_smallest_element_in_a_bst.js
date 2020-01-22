@@ -10,48 +10,51 @@
  * @param {number} k
  * @return {number}
  */
-var kthSmallest = function(root, k) {
+var kthSmallest = function (root, k) {
   let arr = []
-  function travalsalTreeMiddle (node) {
+
+  function traversal(node) {
     if (node !== null) {
-      travalsalTreeMiddle(node.left)
+      traversal(node.left)
       arr.push(node.val)
-      travalsalTreeMiddle(node.right)
+      traversal(node.right)
     }
   }
-  travalsalTreeMiddle(root)
+  traversal(root)
   return arr[k - 1]
 };
 
-var kthSmallest = function(root, k) {
+var kthSmallest = function (root, k) {
   let arr = []
-  function travalsalTreeMiddle (node) {
+
+  function traversal(node) {
     if (node !== null && arr.length < k) {
-      travalsalTreeMiddle(node.left)
+      traversal(node.left)
       arr.push(node.val)
-      travalsalTreeMiddle(node.right)
+      traversal(node.right)
     }
   }
-  travalsalTreeMiddle(root)
+  traversal(root)
   return arr[k - 1]
 };
 
-var kthSmallest = function(root, k) {
+var kthSmallest = function (root, k) {
   let res
   let count = 0
-  function travalsalTreeMiddle (node) {
+
+  function traversal(node) {
     if (node !== null) {
       if (count < k) {
-        travalsalTreeMiddle(node.left)
+        traversal(node.left)
       }
       if (++count === k) {
-        res =  node.val
+        res = node.val
       }
       if (count < k) {
-        travalsalTreeMiddle(node.right)
+        traversal(node.right)
       }
     }
   }
-  travalsalTreeMiddle(root)
+  traversal(root)
   return res
 };
