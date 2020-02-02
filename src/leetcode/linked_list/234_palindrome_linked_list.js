@@ -72,6 +72,7 @@ var isPalindrome = function(head) {
       _head.next = temp
       temp = _head
     }
+    // 奇数链表跳过最中间的节点
     if (fastPointer) {
       slowPointer = slowPointer.next
     }
