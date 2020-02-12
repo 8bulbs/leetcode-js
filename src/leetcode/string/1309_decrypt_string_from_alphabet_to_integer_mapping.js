@@ -2,6 +2,7 @@
  * @param {string} s
  * @return {string}
  */
+// 倒序遍历
 var freqAlphabets = function(s) {
   let res = ''
   const hashTable = {}
