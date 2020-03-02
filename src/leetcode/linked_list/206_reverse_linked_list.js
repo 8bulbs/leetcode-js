@@ -33,6 +33,9 @@ var reverseList = function(head) {
  * @return {ListNode}
  */
 var reverseList = function(head) {
+  if (head === null || head.next === null) {
+    return head
+  }
   let prev = null
   while (head !== null) {
     const next = head.next
