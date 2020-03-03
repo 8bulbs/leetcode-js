@@ -90,3 +90,23 @@ var merge = function(A, m, B, n) {
     }
   }
 };
+
+var merge = function(A, m, B, n) {
+  let tail = m + n - 1
+  let pointerA = m - 1
+  let pointerB = n - 1
+  while (pointerA >= 0 || pointerB >= 0) {
+    if (pointerA === -1) {
+      A[tail--] = B[pointerB--]
+    } else if (pointerB === -1) {
+      A[tail--] = A[pointerA--]
+    } else if (A[pointerA] < B[pointerB]) {
+      A[tail--] = B[pointerB--]
+    } else if (A[pointerA] === B[pointerB]) {
+      A[tail--] = B[pointerB--]
+      A[tail--] = A[pointerA--]
+    } else {
+      A[tail--] = A[pointerA--]
+    }
+  }
+};
