@@ -63,3 +63,30 @@ var merge = function(A, m, B, n) {
   }
   A.sort((a, b) => b - a)
 }
+
+var merge = function(A, m, B, n) {
+  const temp = []
+  let pointerA = 0
+  let pointerB = 0
+  while (pointerA < m || pointerB < n) {
+    if (pointerA === m) {
+      temp.push(B[pointerB++])
+    } else if (pointerB === n) {
+      temp.push(A[pointerA++])
+    } else if (A[pointerA] < B[pointerB]) {
+      temp.push(A[pointerA++])
+    } else if (A[pointerA] === B[pointerB]) {
+      temp.push(A[pointerA++])
+      temp.push(B[pointerB++])
+    } else {
+      temp.push(B[pointerB++])
+    }
+  }
+  for (let i = 0; i < A.length; ++i) {
+    if (temp[i] !== undefined) {
+      A[i] = temp[i]
+    } else {
+      A[i] = 0
+    }
+  }
+};
