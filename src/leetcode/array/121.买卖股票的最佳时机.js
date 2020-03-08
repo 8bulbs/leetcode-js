@@ -34,3 +34,49 @@ var maxProfit = function(prices) {
     return max
 };
 console.warn(maxProfit([1, 2]))
+
+// 模拟过程, 获取相对之前历史每一天的最大收益, 更新最大收益
+var maxProfit = function(prices) {
+  let res = 0
+  for (let i = 1; i < prices.length; ++i) {
+    for (let j = 0; j < i; ++j) {
+      if (prices[i] - prices[j] > res) {
+        res = prices[i] - prices[j]
+      }
+    }
+  }
+  return res
+};
+
+// 记录历史最小值, 更新收益最大值
+var maxProfit = function(prices) {
+  let min = prices[0]
+  let res = 0
+  for (let i = 1; i < prices.length; ++i) {
+    if (prices[i] > min) {
+      if (prices[i] - min > res) {
+        res = prices[i] - min
+      }
+    } else {
+      min = prices[i]
+    }
+  }
+  return res
+};
+
+var maxProfit = function(prices) {
+  let min = prices[0]
+  let res = 0
+  const len = prices.length
+  for (let i = 1; i < len; ++i) {
+    const sub = prices[i] - min
+    if (sub > 0) {
+      if (sub > res) {
+        res = sub
+      }
+    } else {
+      min = prices[i]
+    }
+  }
+  return res
+};
