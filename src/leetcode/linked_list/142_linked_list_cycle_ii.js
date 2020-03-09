@@ -31,3 +31,21 @@ var detectCycle = function(head) {
     return null
   }
 };
+
+var detectCycle = function(head) {
+  let slowPointer = head
+  let fastPointer = head
+  while (fastPointer && fastPointer.next) {
+    slowPointer = slowPointer.next
+    fastPointer = fastPointer.next.next
+    if (slowPointer === fastPointer) {
+      slowPointer = head
+      while (slowPointer !== fastPointer) {
+        slowPointer = slowPointer.next
+        fastPointer = fastPointer.next.next
+      }
+      return slowPointer
+    }
+  }
+  return null
+};
