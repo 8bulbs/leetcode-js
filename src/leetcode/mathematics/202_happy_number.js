@@ -12,32 +12,31 @@
  * @return {boolean}
  */
 var isHappy = function(n) {
-  if (n === 1) {
-    return true
-  }
   const memory = {}
   while (n !== 1) {
-    let arr = (n + '').split('')
-    n = 0
-    arr.forEach(item => {
-      n += Math.pow(item, 2)
-    })
-    if (n === 1) {
-      return true
+    function getBitSquareSum (n) {
+      let sum = 0
+      while (n !== 0) {
+        const bit = n % 10
+        sum += bit * bit
+        n = parseInt(n / 10)
+      }
+      return sum
     }
+    n = getBitSquareSum(n)
     if (memory[n] === undefined) {
       memory[n] = 1
     } else {
       break
     }
   }
-  return false
+  return n === 1
 };
 
 var isHappy = function (n) {
   let slowPointer = n
   let fastPointer = n
-  function getBitSum (n) {
+  function getBitSquareSum (n) {
     let sum = 0
     while (n !== 0) {
       const bit = n % 10
@@ -47,8 +46,8 @@ var isHappy = function (n) {
     return sum
   }
   do {
-    slowPointer = getBitSum(slowPointer)
-    fastPointer = getBitSum(getBitSum(fastPointer))
+    slowPointer = getBitSquareSum(slowPointer)
+    fastPointer = getBitSquareSum(getBitSquareSum(fastPointer))
   } while (slowPointer !== fastPointer)
   return slowPointer === 1
 }
