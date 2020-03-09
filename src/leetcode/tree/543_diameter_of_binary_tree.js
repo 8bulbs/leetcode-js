@@ -42,3 +42,19 @@ var diameterOfBinaryTree = function(root) {
     }
   }
 };
+// un
+var diameterOfBinaryTree = function(root) {
+  let res = 0
+  function traversal (root) {
+    if (root === null) {
+      return 0
+    } else {
+      const leftDiameter = traversal(root.left)
+      const rightDiameter = traversal(root.right)
+      res = Math.max(res, leftDiameter + rightDiameter)
+      return Math.max(leftDiameter, rightDiameter) + 1
+    }
+  }
+  traversal(root)
+  return res
+}
